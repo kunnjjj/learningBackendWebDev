@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .container{
+            list-style: none;
+            width: 300px;
+            border: 2px solid black;
+            box-shadow: 2px 2px 2px;
+            height: 200px;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>All products</h1>
+    <ul>
+        <% console.log(products) %>
+
+            <%for(let item of products){ %>
+                <li class=container> 
+                    <div><h3><%=item.name%></h3></div>
+                    <div><%=item.price%></div>
+                    <div><%=item.desc%></div>
+                </li>
+                <%}%>
+
+    </ul>
+</body>
+
+</html>

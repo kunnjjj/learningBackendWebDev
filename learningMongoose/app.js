@@ -23,6 +23,6 @@ const Product = mongoose.model("Product", productSchema);
 const bike = new Product({ name: "jupiter", price: 66000 });
 console.log(bike);
 bike.save().then((res) => {
- console.log("saved");
+  console.log("saved");
   console.log(res);
 });

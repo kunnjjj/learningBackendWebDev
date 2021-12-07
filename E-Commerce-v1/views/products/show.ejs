@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate') %>
+    <style>
+        
+
+        @media screen and (max-width: 500px) {
+            .buttons-styling{
+                flex-direction: column;
+                /* align-content: flex-start; */
+                align-items:stretch;
+                
+                /* display: no; */
+               
+            }
+            .buttons-styling form button{
+                margin-top: 1px;
+                /* margin-left: 0; */
+            }
+        }
+    </style>
+    <div class="container">
+        <div class="card mb-3 mt-2">
+            <img class="card-img-top" src="<%=yeProd.img%>" style="width: 300px; height:auto; margin: auto;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <%=yeProd.name%>
+                </h5>
+                <p class="card-text">
+                    <%=yeProd.desc%>
+                </p>
+
+            </div>
+        </div>
+        <div class="buttons-styling container" style="display:flex; align-items: center; flex-wrap: wrap;">
+            <form class="mx-1">
+                <button type="button" class="btn btn-success">Buy Now</button>
+            </form>
+            <form class="mx-1">
+                <button type="button" class="btn btn-primary">Add to Cart</button>
+            </form>
+            <form class="mx-1">
+                <button type="button" class="btn btn-secondary">Edit</button>
+            </form>
+            <form class="mx-1">
+                <button type="button" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+
+
+    </div>

@@ -1,0 +1,21 @@
+<% layout('layouts/boilerplate') %>
+    <style>
+        
+    </style>
+    <ul class="container" style="display:flex; width:95%; flex-wrap:wrap; justify-content: space-evenly; align-items: center;">
+        <%for(let product of allProducts){%>
+            <li style="list-style: none;" class="col-sm-4 box">
+                <div class="card" style="margin: 3px 3px 3px;">
+                    <!-- <%console.log(product.img); %> -->
+                    <img src=<%=product.img%> class="card-img-top" alt="\E-Commerce-v1\models\dummyImage.jpg">
+                    <div class="card-body">
+                      <h5 class="card-title"><%=product.name%></h5>
+                      <p class="card-text" style="font-size: small;"><%=product.desc%></p>
+                      <a href="/products/<%=product._id%>" class="btn btn-primary"">Buy Now</a>
+                    </div>
+                </div>
+            </li>
+        <%}%>
+    
+
+    </ul>
