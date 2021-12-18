@@ -1,0 +1,131 @@
+<% layout('layouts/boilerplate') %>
+    <style>
+        @media screen and (max-width: 500px) {
+            .buttons-styling {
+                flex-direction: column;
+                /* align-content: flex-start; */
+                align-items: stretch;
+
+                /* display: no; */
+
+            }
+
+            .buttons-styling form button {
+                margin-top: 1px;
+                /* margin-left: 0; */
+            }
+
+        }
+
+        .checked {
+            color: orange;
+            /* border: blue 1px; */
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="container">
+        <div class="row">
+            <div class="mx-3 col-6">
+                <div class="card mb-3 mt-2">
+                    <img class="card-img-top" src="<%=yeProd.img%>" style="width: 200px; height:auto; margin: auto;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=yeProd.name%>
+                        </h5>
+                        <p class="card-text">
+                            <%=yeProd.desc%>
+                        </p>
+
+                    </div>
+                </div>
+                <div class="buttons-styling container" style="display:flex; align-items: center; flex-wrap: wrap;">
+                    <form class="mx-1">
+                        <button type="button" class="btn btn-success btn-sm">Buy Now</button>
+                    </form>
+                    <form class="mx-1">
+                        <button type="button" class="btn btn-primary btn-sm">Add to Cart</button>
+                    </form>
+                    <form class="mx-1">
+                        <button type="button" class="btn btn-secondary btn-sm">Edit</button>
+                    </form>
+                    <form class="mx-1">
+                        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col">
+                <form action="/products/<%=id%>" method="post">
+                    <h3>Leave a review</h3>
+                    <textarea style="width:400px; height:150px" name="text"></textarea>
+                    <!-- <span class="fa fa-star star"></span>
+                    <span class="fa fa-star star"></span>
+                    <span class="fa fa-star star"></span>
+                    <span class="fa fa-star star"></span>
+                    <span class="fa fa-star star"></span> -->
+                    <button type="submit">Submit</button>
+                </form>
+                <ul>
+                    <%for(let rev of yeProd.reviews){%>
+                        <li>
+                            <%=rev.comment%>
+                        </li>
+                    <%}%>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        let rating = 0;
+        let stars = document.getElementsByClassName("fa fa-star star");
+        console.log(stars)
+        for (let star of stars) {
+            star.addEventListener("mouseenter", () => {
+                for (let smallStar of stars) {
+                    smallStar.classList.add("checked");
+                    // console.log(i++);
+                    console.log(smallStar);
+                    if (smallStar == star) {
+                        break;
+                    }
+                }
+            });
+            let clicked = 0;
+            star.addEventListener("click", () => {
+                // console.log("hello sir");
+                // let i=0;
+                for (let smallStar of stars) {
+                    smallStar.classList.add("checked");
+                    // console.log(i++);
+                    clicked = 1;
+                    // console.log("i am small star" + smallStar);
+                    rating++;
+                    if (smallStar == star) {
+                        break;
+                    }
+                }
+            });
+            star.addEventListener("mouseleave", () => {
+                // star.classList.remove("checked");
+                for (let smallStar of stars) {
+                    if (!clicked)
+                        smallStar.classList.remove("checked");
+                    // console.log(i++);
+                    console.log(smallStar);
+                    if (smallStar == star) {
+                        break;
+                    }
+                }
+            });
+
+
+
+
+
+
+            // console.log(star);
+        }
+
+    </script>
